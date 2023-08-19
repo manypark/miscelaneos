@@ -1,6 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+final permissionsProvider = StateNotifierProvider<PermissionNotifier, PermissionState>((ref) {
+  return PermissionNotifier(); 
+});
+
 class PermissionNotifier extends StateNotifier<PermissionState> {
 
   PermissionNotifier(): super( PermissionState() ) {
@@ -8,6 +12,7 @@ class PermissionNotifier extends StateNotifier<PermissionState> {
   }
 
   Future<void> checkPermission() async {
+
     final permissionArray = await Future.wait([
 
       Permission.camera.status,
@@ -29,13 +34,32 @@ class PermissionNotifier extends StateNotifier<PermissionState> {
     );
   }
 
-  requestCameraAccess() async {
-    final status = await Permission.camera.request();
-    state = state.copyWith( camera: status );
+  requestPermissionAccess( Permission permission ) async {
 
-    if( status == PermissionStatus.permanentlyDenied ) {
-      openAppSettings();
+    final status = await permission.request();
+
+    switch (permission) {
+
+      case Permission.camera:
+        state = state.copyWith( camera: status );
+      break;
+
+      case Permission.photos:
+        state = state.copyWith( photoLibrary: status );
+      break;
+      
+      case Permission.location:
+        state = state.copyWith( location: status );
+      break;
+
+      case Permission.sensors:
+        state = state.copyWith( sensors: status );
+      break;
+
     }
+
+    if( status == PermissionStatus.permanentlyDenied ) openAppSettings();
+
   }
   
 }
