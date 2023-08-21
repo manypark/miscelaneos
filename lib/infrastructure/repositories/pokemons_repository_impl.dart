@@ -5,7 +5,7 @@ class PokemonsRepositoryIpml implements PokemonsRepository {
 
   final PokemonsDatasource datasource;
 
-  PokemonsRepositoryIpml( PokemonsDatasource? datasource ) : datasource = datasource ?? PokemonsDatasourceImpl();
+  PokemonsRepositoryIpml( {PokemonsDatasource? datasource} ) : datasource = datasource ?? PokemonsDatasourceImpl();
 
   @override
   Future<(Pokemon?, String)> getPokemon(String id) async {

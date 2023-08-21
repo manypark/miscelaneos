@@ -16,6 +16,7 @@ dependencies:
   google_fonts: ^5.1.0
   permission_handler: ^10.4.3
   sensors_plus: ^3.0.3
+  share_plus: ^7.1.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
