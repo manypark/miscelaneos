@@ -10,3 +10,4 @@ export 'sensors/magnometer_screen.dart';
 export 'home/permissions/ask_location_screen.dart';
 
 export 'pokemons/pokemons_screen.dart';
+export 'pokemons/pokemon_screen.dart';
