@@ -8,3 +8,5 @@ export 'sensors/gyroscope_screen.dart';
 export 'sensors/magnometer_screen.dart';
 
 export 'home/permissions/ask_location_screen.dart';
+
+export 'pokemons/pokemons_screen.dart';

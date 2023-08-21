@@ -22,6 +22,7 @@ class MenuItem {
 
     MenuItem(title: 'Giróscopio Ball', icon: Icons.sports_baseball_outlined, route: '/gyroscope-ball'),
     MenuItem(title: 'Brújula',         icon: Icons.explore,                  route: '/compass'),
+    MenuItem(title: 'Pokemons',        icon: Icons.explore,                  route: '/pokemons' ),
   ];
 
 class MainMenu extends StatelessWidget {
