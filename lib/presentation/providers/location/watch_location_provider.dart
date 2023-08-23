@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 
-final useLocationProvider = FutureProvider.autoDispose<( double, double)>((ref) async {
+final watchLocationProvider = StreamProvider.autoDispose<( double, double)>((ref) async* {
 
     bool serviceEnabled;
     LocationPermission permission;
@@ -27,7 +27,10 @@ final useLocationProvider = FutureProvider.autoDispose<( double, double)>((ref) 
       throw 'Location permissions are permanently denied, we cannot request permissions.';
     }
 
-    final location = await Geolocator.getCurrentPosition();
+    // final location = await Geolocator.getCurrentPosition();
 
-    return ( location.latitude, location.longitude );
+    await for( final pos in Geolocator.getPositionStream()) {
+      yield ( pos.latitude, pos.longitude );
+    }
+
 });
