@@ -16,7 +16,7 @@ class LocalAuthNotifier extends StateNotifier<LocalAuthState> {
 
   Future<( bool, String )> authenticateUser() async {
 
-    final ( didAuthenticate, message ) = await LocalAuthPlugin.authenticate();
+    final ( didAuthenticate, message ) = await LocalAuthPlugin.authenticate( biometricOnly: true );
 
     state = state.copyWith( 
       didAuthenticate : didAuthenticate, 
@@ -56,4 +56,11 @@ class LocalAuthState {
     );
   }
   
+
+  @override
+  String toString() => '''
+  didAuthenticate: $didAuthenticate
+  status: $status
+  message: $message
+  ''';
 }

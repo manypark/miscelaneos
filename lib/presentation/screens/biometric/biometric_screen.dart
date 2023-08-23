@@ -10,6 +10,7 @@ class BiometricScreen extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
 
     final canCheckBiometris = ref.watch( canCheckBiometricsProvider );
+    final localAuthState = ref.watch( localAuthProvider );
 
     return Scaffold(
       appBar: AppBar(
@@ -22,7 +23,9 @@ class BiometricScreen extends ConsumerWidget {
           children          : [
 
             FilledButton(
-              onPressed: (){},
+              onPressed: () {
+                ref.read(localAuthProvider.notifier).authenticateUser();
+              },
               child: const Text('Autenticar', style: TextStyle( fontSize: 20 ) )
             ),
 
@@ -36,9 +39,11 @@ class BiometricScreen extends ConsumerWidget {
 
             const SizedBox( height: 30 ),
 
-            const Text('Estado del biometrico', style: TextStyle( fontSize: 24 ) ),
+            const Text('Estado del biometrico', style: TextStyle( fontSize: 18 ) ),
 
-            const Text('Estado: XXX', style: TextStyle( fontSize: 24 ) ),
+            const SizedBox( height: 30 ),
+
+            Text('$localAuthState', style: const TextStyle( fontSize: 18 ) ),
 
           ],
         ),
