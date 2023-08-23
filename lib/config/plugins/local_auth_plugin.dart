@@ -39,8 +39,6 @@ class LocalAuthPlugin {
 
       } on PlatformException catch (e) {
 
-        // ignore: avoid_print
-        print(e);
 
         if( e.code == auth_error.notEnrolled ) return ( false, 'No hay biometricos enrrolados' );
         if( e.code == auth_error.lockedOut ) return ( false, 'Muchos intentos fallidos' );
