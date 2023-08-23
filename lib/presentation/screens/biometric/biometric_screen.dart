@@ -1,32 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:miscelaneos/presentation/providers/providers.dart';
 
-class BiometricScreen extends StatelessWidget {
+class BiometricScreen extends ConsumerWidget {
 
   const BiometricScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+
+    final canCheckBiometris = ref.watch( canCheckBiometricsProvider );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Biometric Screen'),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children         : [
+          mainAxisAlignment : MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children          : [
 
-            FilledButton.tonal(
+            FilledButton(
               onPressed: (){},
               child: const Text('Autenticar', style: TextStyle( fontSize: 20 ) )
             ),
 
-            //TODO Feedback del proceso
+            const SizedBox( height: 30 ),
 
-            const SizedBox( width: 30 ),
+            canCheckBiometris.when(
+              data    : (canCheck) => Text('Puede implementar biometrics: $canCheck'),
+              error   : (error, stackTrace) => Text('Error: $error'), 
+              loading : () => const CircularProgressIndicator.adaptive()
+            ),
 
-            const Text('Estado del biometrico', style: TextStyle( fontSize: 30 ) ),
+            const SizedBox( height: 30 ),
 
-            const Text('Estado: XXX', style: TextStyle( fontSize: 30 ) ),
+            const Text('Estado del biometrico', style: TextStyle( fontSize: 24 ) ),
+
+            const Text('Estado: XXX', style: TextStyle( fontSize: 24 ) ),
 
           ],
         ),
