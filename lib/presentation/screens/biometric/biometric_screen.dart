@@ -17,7 +17,7 @@ class BiometricScreen extends StatelessWidget {
 
             FilledButton.tonal(
               onPressed: (){},
-              child: const Text('Autenticar')
+              child: const Text('Autenticar', style: TextStyle( fontSize: 20 ) )
             ),
 
             //TODO Feedback del proceso
