@@ -28,6 +28,9 @@
     <key>NSPhotoLibraryUsageDescription</key>
     <string> Se necesita acceso a las fotos </string>
 
+	<key>NSFaceIDUsageDescription</key>
+	<string> Un inicio de sesion mas rapido y seguro </string>
+
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

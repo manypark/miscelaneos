@@ -11,3 +11,5 @@ export 'home/permissions/ask_location_screen.dart';
 
 export 'pokemons/pokemons_screen.dart';
 export 'pokemons/pokemon_screen.dart';
+
+export 'biometric/biometric_screen.dart';
