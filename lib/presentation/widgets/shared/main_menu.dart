@@ -22,8 +22,14 @@ class MenuItem {
 
     MenuItem(title: 'Giróscopio Ball', icon: Icons.sports_baseball_outlined, route: '/gyroscope-ball'),
     MenuItem(title: 'Brújula',         icon: Icons.explore,                  route: '/compass'),
+
     MenuItem(title: 'Pokemons',        icon: Icons.explore,                  route: '/pokemons' ),
+
     MenuItem(title: 'Biometrics',      icon: Icons.fingerprint,               route: '/biometrics' ),
+
+    MenuItem(title: 'Ubicacion',      icon: Icons.pin_drop,                  route: '/location' ),
+    MenuItem(title: 'Mapas',          icon: Icons.map_outlined,              route: '/maps' ),
+    MenuItem(title: 'Controlado',     icon: Icons.gamepad_outlined,          route: '/controlled-map' ),
   ];
 
 class MainMenu extends StatelessWidget {
