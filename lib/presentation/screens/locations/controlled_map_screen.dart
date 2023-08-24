@@ -85,7 +85,7 @@ class MapAndControls extends ConsumerWidget {
             onPressed: () {
               ref.read( mapControllerProvider.notifier ).toggleFollowUser();
             },
-            icon : Icon( mapController.followUser ? Icons.accessibility_new_outlined : Icons.directions_run )
+            icon : Icon( mapController.followUser ? Icons.directions_run : Icons.accessibility_new_outlined )
           )
         ),
 
@@ -94,7 +94,7 @@ class MapAndControls extends ConsumerWidget {
           left  : 20,
           child : IconButton.filled(
             onPressed: () {
-
+              ref.read( mapControllerProvider.notifier ).addMarkerCurrentPosition();
             },
             icon     : const Icon( Icons.pin_drop )
           )
@@ -125,7 +125,11 @@ class _MapViewState extends ConsumerState<_MapView> {
 
   @override
   Widget build(BuildContext context) {
+
+  final mapController = ref.watch( mapControllerProvider );
+
     return GoogleMap(
+      markers                 : mapController.markerSet,
       initialCameraPosition   : CameraPosition(
         target: LatLng( widget.latitud, widget.longitud), zoom : 12,
       ),
@@ -135,6 +139,9 @@ class _MapViewState extends ConsumerState<_MapView> {
       myLocationButtonEnabled : false,
       onMapCreated            : (GoogleMapController controller) {
         ref.read( mapControllerProvider.notifier ).setMapController(controller);
+      },
+      onLongPress: (argument) {
+        ref.read( mapControllerProvider.notifier ).addMarker( argument.latitude, argument.longitude, 'Custom Market' );
       },
     );
   }

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-final mapControllerProvider = StateNotifierProvider<MapNotifier, MapState>((ref) {
+final mapControllerProvider = StateNotifierProvider.autoDispose<MapNotifier, MapState>((ref) {
   return MapNotifier();
 });
 
@@ -47,7 +47,7 @@ class MapNotifier extends StateNotifier<MapState> {
     if( state.followUser ) {
 
       findUser();
-      
+
       userLocationSubs = trackUser().listen((event) {
         goToLocation( event.$1, event.$2);
       });
@@ -69,6 +69,29 @@ class MapNotifier extends StateNotifier<MapState> {
     //   goToLocation(event.$1, event.$2);
     // });
   }
+
+  void addMarkerCurrentPosition() {
+
+    if(lastKnowLocation == null ) return;
+
+    final ( lat, long ) = lastKnowLocation!;
+      addMarker(lat, long, 'Por aqui paso el user');
+  }
+
+  void addMarker( double lat, double long, String name ) {
+
+    final newMarker = Marker(
+      markerId: MarkerId('${ state.markers.length }'),
+      position: LatLng( lat, long ),
+      infoWindow: InfoWindow(
+        title : name,
+        snippet: 'El snippet'
+      )
+    );
+
+
+    state = state.copyWith( markers: [ ...state.markers, newMarker ] );
+  }
   
 }
 
@@ -85,6 +108,10 @@ class MapState {
     this.markers = const [],
     this.controller,
   });
+
+  Set<Marker> get markerSet {
+    return Set.from(markers);
+  }
 
   MapState copyWith({
     bool? isReady,
