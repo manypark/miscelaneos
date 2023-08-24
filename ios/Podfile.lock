@@ -19,6 +19,8 @@ PODS:
     - FlutterMacOS
   - permission_handler_apple (9.1.1):
     - Flutter
+  - quick_actions_ios (0.0.1):
+    - Flutter
   - sensors_plus (0.0.1):
     - Flutter
   - share_plus (0.0.1):
@@ -32,6 +34,7 @@ DEPENDENCIES:
   - local_auth_ios (from `.symlinks/plugins/local_auth_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - quick_actions_ios (from `.symlinks/plugins/quick_actions_ios/ios`)
   - sensors_plus (from `.symlinks/plugins/sensors_plus/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
 
@@ -54,6 +57,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
+  quick_actions_ios:
+    :path: ".symlinks/plugins/quick_actions_ios/ios"
   sensors_plus:
     :path: ".symlinks/plugins/sensors_plus/ios"
   share_plus:
@@ -68,6 +73,7 @@ SPEC CHECKSUMS:
   local_auth_ios: c6cf091ded637a88f24f86a8875d8b0f526e2605
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
   permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
+  quick_actions_ios: 9e80dcfadfbc5d47d9cf8f47bcf428b11cf383d4
   sensors_plus: bda64198ccc7d3ccbb49e6ae17d92f67687bee20
   share_plus: 599aa54e4ea31d4b4c0e9c911bcc26c55e791028
 

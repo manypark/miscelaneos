@@ -17,3 +17,5 @@ export 'biometric/biometric_screen.dart';
 export 'locations/controlled_map_screen.dart';
 export 'locations/location_screen.dart';
 export 'locations/map_screen.dart';
+
+export 'badge/badge_screen.dart';

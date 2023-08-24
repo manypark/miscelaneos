@@ -30,6 +30,8 @@ class MenuItem {
     MenuItem(title: 'Ubicacion',      icon: Icons.pin_drop,                  route: '/location' ),
     MenuItem(title: 'Mapas',          icon: Icons.map_outlined,              route: '/maps' ),
     MenuItem(title: 'Controlado',     icon: Icons.gamepad_outlined,          route: '/controlled-map' ),
+
+    MenuItem(title: 'Badge',          icon: Icons.notification_important,     route: '/badge' ),
   ];
 
 class MainMenu extends StatelessWidget {
