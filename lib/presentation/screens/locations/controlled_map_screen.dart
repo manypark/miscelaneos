@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:miscelaneos/presentation/providers/providers.dart';
@@ -12,10 +12,11 @@ class ControlledMapScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
 
-    final followUserLocation = ref.watch( watchLocationProvider );
+    final userInitialLocation = ref.watch( userLocationProvider );
+    // final followUserLocation = ref.watch( watchLocationProvider );
 
     return Scaffold(
-      body: followUserLocation.when(
+      body: userInitialLocation.when(
         data   : (data) => MapAndControls(latitud: data.$1, longitud:  data.$2),
         error  : (error, stackTrace) => Text('$error'),
         loading: () => const Center(
@@ -48,6 +49,9 @@ class MapAndControls extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+
+    final mapController = ref.watch( mapControllerProvider );
+
     return Stack(
       children: [
 
@@ -68,7 +72,7 @@ class MapAndControls extends ConsumerWidget {
           left  : 20,
           child : IconButton.filled(
             onPressed: () {
-              ref.read( mapControllerProvider.notifier ).goToLocation(latitud, longitud);
+              ref.read( mapControllerProvider.notifier ).findUser();
             },
             icon     : const Icon( Icons.location_searching )
           )
@@ -79,9 +83,9 @@ class MapAndControls extends ConsumerWidget {
           left  : 20,
           child : IconButton.filled(
             onPressed: () {
-
+              ref.read( mapControllerProvider.notifier ).toggleFollowUser();
             },
-            icon     : const Icon( Icons.accessibility_new_outlined ) //Icons.directions_run
+            icon : Icon( mapController.followUser ? Icons.accessibility_new_outlined : Icons.directions_run )
           )
         ),
 
