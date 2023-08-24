@@ -12,3 +12,5 @@ sha-256
 cd android
 ./gradlew signingReport
 ```
+
+## Cambiar apis key google
