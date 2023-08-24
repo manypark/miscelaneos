@@ -18,6 +18,7 @@ dependencies:
   google_maps_flutter: ^2.4.0
   local_auth: ^2.1.6
   permission_handler: ^10.4.3
+  quick_actions: ^1.0.5
   sensors_plus: ^3.0.3
   share_plus: ^7.1.0
 

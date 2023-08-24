@@ -106,7 +106,6 @@ class MapAndControls extends ConsumerWidget {
 
 }
 
-
 class _MapView extends ConsumerStatefulWidget {
 
   final double latitud;
@@ -145,4 +144,5 @@ class _MapViewState extends ConsumerState<_MapView> {
       },
     );
   }
+  
 }
