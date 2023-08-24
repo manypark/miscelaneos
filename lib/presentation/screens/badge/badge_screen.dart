@@ -36,6 +36,7 @@ class BadgeScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.read( badgeProvider.notifier ).update((state) => state + 1 );
+          AppBadgePlugin.updateBadgeCount( badgeCounter + 1 );
         },
         child: const Icon( Icons.plus_one ),
       ),
