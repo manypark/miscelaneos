@@ -2,7 +2,7 @@ import 'package:isar/isar.dart';
 import 'package:miscelaneos/domain/domain.dart';
 import 'package:path_provider/path_provider.dart';
 
-class  IsarLocalDbDatasource extends LocalDbDatasource {
+class IsarLocalDbDatasource extends LocalDbDatasource {
 
   late Future<Isar> db;
 
@@ -25,18 +25,30 @@ class  IsarLocalDbDatasource extends LocalDbDatasource {
   }
 
   @override
-  Future<void> addPokemon(Pokemon pokemon) {
-    throw UnimplementedError();
+  Future<void> addPokemon(Pokemon pokemon) async {
+
+    final isar = await db;
+
+    final done = isar.writeTxnSync(() => isar.pokemons.putSync( pokemon ));
+
+    // ignore: avoid_print
+    print('Addpokemon: $done');
   }
 
   @override
-  Future<List<Pokemon>> localPokemons() {
-    throw UnimplementedError();
+  Future<List<Pokemon>> loadPokemons() async {
+
+    final isar = await db;
+
+    return isar.pokemons.where().findAll();
   }
 
   @override
-  Future<int> pokemonsCount() {
-    throw UnimplementedError();
+  Future<int> pokemonsCount() async {
+
+    final isar = await db;
+
+    return isar.pokemons.count();
   }
   
 }
