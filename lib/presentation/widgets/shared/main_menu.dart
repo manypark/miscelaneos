@@ -24,6 +24,7 @@ class MenuItem {
     MenuItem(title: 'Brújula',         icon: Icons.explore,                  route: '/compass'),
 
     MenuItem(title: 'Pokemons',        icon: Icons.explore,                  route: '/pokemons' ),
+    MenuItem(title: 'Background process',icon: Icons.storage_rounded,        route: '/db-pokemons' ),
 
     MenuItem(title: 'Biometrics',      icon: Icons.fingerprint,               route: '/biometrics' ),
 
@@ -35,6 +36,7 @@ class MenuItem {
     
     MenuItem(title: 'Ad full',        icon: Icons.ad_units_rounded,          route: '/ad-fullscreen' ),
     MenuItem(title: 'Ad rewarded',    icon: Icons.fort_sharp,                route: '/ad-rewarded' ),
+
   ];
 
 class MainMenu extends StatelessWidget {

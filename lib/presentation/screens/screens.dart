@@ -11,6 +11,7 @@ export 'home/permissions/ask_location_screen.dart';
 
 export 'pokemons/pokemons_screen.dart';
 export 'pokemons/pokemon_screen.dart';
+export 'pokemons/db_pokemons_screen.dart';
 
 export 'biometric/biometric_screen.dart';
 
@@ -22,3 +23,4 @@ export 'badge/badge_screen.dart';
 
 export 'ads/ad_full_screen.dart';
 export 'ads/ad_rewarded_screen.dart';
+
