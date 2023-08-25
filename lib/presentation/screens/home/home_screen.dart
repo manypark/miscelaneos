@@ -37,12 +37,11 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          //TODO ad banner
-          Container(
-            color : Colors.red,
-            width : double.infinity,
-            height: 75,
-          ),
+          // Container(
+          //   color : Colors.red,
+          //   width : double.infinity,
+          //   height: 75,
+          // ),
 
         ],
       ),
