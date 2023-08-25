@@ -25,6 +25,7 @@ dependencies:
   quick_actions: ^1.0.5
   sensors_plus: ^3.0.3
   share_plus: ^7.1.0
+  shared_preferences: ^2.2.0
   workmanager: ^0.5.1
 
 dev_dependencies:
