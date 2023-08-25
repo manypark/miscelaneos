@@ -15,7 +15,7 @@ void callbackDispatcher() {
       break;
 
       case fetchPeriodicBackgroundTaskKey:
-        print('fetchPeriodicBackgroundTaskKey');
+        await loadNextPokemon();
       break;
 
       case Workmanager.iOSBackgroundTask:
@@ -44,10 +44,9 @@ Future loadNextPokemon() async {
     if( pokemon == null ) throw message;
 
     await localDbRepository.addPokemon(pokemon);
-    print('Pokemon save: ${pokemon.name}');
 
   } catch (e) {
-    print('$e');
+    null;
   }
 
 }
