@@ -20,8 +20,8 @@ class DbPokemonsScreen extends StatelessWidget {
               Workmanager().registerOneOffTask(
                 fetchBackgroundTaskKey,
                 fetchBackgroundTaskKey,
-                initialDelay: const Duration( minutes: 3 ),
-                inputData:  { 'howmany': 30 },
+                initialDelay: const Duration( seconds: 5 ),
+                inputData:  { 'pokemonInsert': true },
               );
             }, 
             icon      : const Icon( Icons.add_alarm_sharp)

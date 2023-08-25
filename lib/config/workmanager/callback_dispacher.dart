@@ -1,4 +1,5 @@
 import 'package:workmanager/workmanager.dart';
+import 'package:miscelaneos/infrastructure/infrastructure.dart';
 
 const fetchBackgroundTaskKey = 'menu.dev.miscelaneo.fecth-background-pokemon';
 const fetchPeriodicBackgroundTaskKey = 'menu.dev.miscelaneo.fecth-background-pokemon';
@@ -10,7 +11,7 @@ void callbackDispatcher() {
     switch ( task ) {
 
       case fetchBackgroundTaskKey:
-        print('fetchBackgroundTaskKey');
+        await loadNextPokemon();
       break;
 
       case fetchPeriodicBackgroundTaskKey:
@@ -26,5 +27,27 @@ void callbackDispatcher() {
     // print("Native called background task: $task");
     // return Future.value(true);
   });
+
+}
+
+Future loadNextPokemon() async {
+
+  final localDbRepository = LocalDbRepositoryImpl();
+  final pokemonRepository = PokemonsRepositoryIpml();
+
+  final lastPokemonId = await localDbRepository.pokemonsCount() + 1;
+
+  try {
+
+    final ( pokemon, message ) = await pokemonRepository.getPokemon( '$lastPokemonId' );
+
+    if( pokemon == null ) throw message;
+
+    await localDbRepository.addPokemon(pokemon);
+    print('Pokemon save: ${pokemon.name}');
+
+  } catch (e) {
+    print('$e');
+  }
 
 }
