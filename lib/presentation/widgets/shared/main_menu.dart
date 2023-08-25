@@ -32,6 +32,9 @@ class MenuItem {
     MenuItem(title: 'Controlado',     icon: Icons.gamepad_outlined,          route: '/controlled-map' ),
 
     MenuItem(title: 'Badge',          icon: Icons.notification_important,     route: '/badge' ),
+    
+    MenuItem(title: 'Ad full',        icon: Icons.ad_units_rounded,          route: '/ad-fullscreen' ),
+    MenuItem(title: 'Ad rewarded',    icon: Icons.fort_sharp,                route: '/ad-rewarded' ),
   ];
 
 class MainMenu extends StatelessWidget {

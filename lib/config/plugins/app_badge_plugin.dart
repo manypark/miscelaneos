@@ -8,9 +8,7 @@ class AppBadgePlugin {
 
   static void updateBadgeCount( int count ) async {
 
-    if( !await isBadgeSupported )  {
-      return;
-    }
+    if( !await isBadgeSupported ) return;
 
     FlutterAppBadger.updateBadgeCount( count );
 
