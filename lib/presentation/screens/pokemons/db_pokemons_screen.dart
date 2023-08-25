@@ -18,7 +18,7 @@ class DbPokemonsScreen extends StatelessWidget {
           IconButton(
             onPressed : () {
               Workmanager().registerOneOffTask(
-                fetchBackgroundTaskKey, 
+                fetchBackgroundTaskKey,
                 fetchBackgroundTaskKey,
                 initialDelay: const Duration( minutes: 3 ),
                 inputData:  { 'howmany': 30 },

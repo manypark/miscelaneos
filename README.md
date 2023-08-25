@@ -14,3 +14,10 @@ cd android
 ```
 
 ## Cambiar apis key google
+
+## Generadpr de codigo ( ISAR, Riverpod )
+
+```
+flutter pub run build_runner build
+flutter pub run build_runner watch
+```
